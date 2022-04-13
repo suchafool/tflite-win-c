@@ -1,3 +1,6 @@
+# about this fork
+Add digital classification implementation. The `include` and `libs` folder had been changed for  convenience of debug.
+
 # tflite-win-c
 This is an ssd object detection and deeplab image segmentation demo project using TensorFlow Lite C API on windows with Visual Studio C++.
 

@@ -1,11 +1,13 @@
 #include <iostream>
 #include <fstream>
+#include <chrono>
 #include "opencv2/core.hpp"
 #include "opencv2/highgui.hpp"
 #include "opencv2/imgproc.hpp"
 #include "ObjectDetector.h"
 #include "ImageSegmentation.h"
 #include "StyleTransfer.h"
+#include "DigitalClassification.h"
 
 using namespace std;
 using namespace cv;
@@ -117,10 +119,21 @@ void runStyleTransfer() {
 	}
 }
 
+void runDigitalClassification() {
+	Mat src = imread("digital_3.jpg", cv::IMREAD_GRAYSCALE);
+	DigitalClassification classifier = DigitalClassification("ezy_digital_02_2.tflite");
+
+	cout << "classifying, this may take several seconds..." << endl;
+
+	int ret = classifier.recognize(src);
+	cout << "recognized as: " << ret << endl;
+}
+
 int main()
 {
-	runObjectDetectionLive();
+	//runObjectDetectionLive();
 	//runObjectDetection();
 	// runSegmentation();
 	// runStyleTransfer();
+	runDigitalClassification();
 }

@@ -106,13 +106,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(TFLITE_DIST)\include;$(OPENCV_DIST)\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(TFLITE_DIST)\libs\windows_x86_64;$(OPENCV_DIST)\build\x64\vc15\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>tensorflowlite_c.dll.if.lib;opencv_world455d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>tensorflowlite_c.lib;opencv_world3416d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -157,16 +157,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DigitalClassification.cpp" />
     <ClCompile Include="ImageSegmentation.cpp" />
     <ClCompile Include="ObjectDetector.cpp" />
     <ClCompile Include="StyleTransfer.cpp" />
     <ClCompile Include="tflite-c-win.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DigitalClassification.h" />
     <ClInclude Include="ImageSegmentation.h" />
     <ClInclude Include="ObjectDetector.h" />
     <ClInclude Include="StyleTransfer.h" />
     <ClInclude Include="Utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="libs\opencv_world3416d.lib" />
+    <Library Include="libs\tensorflowlite_c.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
